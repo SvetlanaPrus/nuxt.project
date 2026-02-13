@@ -1,0 +1,271 @@
+@import 'tailwindcss';
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+:root {
+  --color-facebook: oklch(62% 0.22 264);
+  --color-instagram: oklch(63% 0.27 327);
+  --color-youtube: oklch(62% 0.26 29);
+  --color-tiktok: oklch(20% 0 0);
+
+  --color-green: oklch(0.6758 0.1571 133.81);
+  --color-sand: oklch(0.888 0.0171 87.51);
+
+
+  --primary: oklch(0.662 0.1385 234);
+  --primary-foreground: oklch(1.0000 0.0001 263.28);
+  --secondary: oklch(0.4032 0.0507 77.11);
+  --secondary-foreground: oklch(0.3184 0.0170 48.11);
+
+  --background: var(--color-brand-sand);
+  --foreground: oklch(0.3212 0.0157 50.88);
+
+  --card: var(--color-gray-200);
+  --card-foreground: oklch(0.3184 0.0170 48.11);
+
+  --popover: oklch(1.0000 0.0001 263.28);
+  --popover-foreground:oklch(0.3184 0.0170 48.11);
+
+  --muted: oklch(0.9512 0.0034 38.54);
+  --muted-foreground: oklch(0.5 0.0264 67.33); 
+
+  --accent: oklch(0.8810 0.0202 45.11);
+  --accent-foreground: oklch(0.3184 0.0170 48.11);
+
+  --destructive: oklch(0.6352 0.2068 25.30);
+  --destructive-foreground: oklch(0.9812 0.0035 248.23);
+
+  --border: oklch(0.9025 0.0081 36.15);
+  --input: oklch(0.9025 0.0081 36.15);
+  --ring: oklch(0.7655 0.0587 240);
+
+  --radius: var(--radius-lg);
+}
+
+
+@theme {
+  --font-family-Roboto: Roboto, Helvetica, Arial, sans-serif;
+  /* --font-family-SuisseIntlRegular: "Suisse Intl Regular", Roboto, Helvetica, Arial, sans-serif; */
+  /* --font-family-SuisseIntlMedium: "Suisse Intl Medium", Roboto, Helvetica, Arial, sans-serif; */
+  /* --font-family-SuisseIntlBold: "Suisse Intl Bold", Roboto, Helvetica, Arial, sans-serif; */
+
+
+  --color-black: var(--color-gray-800);
+  --color-brand-primary: var(--primary);
+  --color-brand-secondary: var(--secondary);
+  --color-brand-tertiary: var(--tertiary);
+
+  --color-brand-green: var(--color-green);
+  --color-brand-sand: var(--color-sand);
+
+  --color-palette-100: var(--palette-100);
+  --color-palette-200: var(--palette-200);
+  --color-palette-300: var(--palette-300);
+  --color-palette-400: var(--palette-400);
+  --color-palette-500: var(--palette-500);
+
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-facebook: var(--color-facebook);
+  --color-instagram: var(--color-instagram);
+  --color-youtube: var(--color-youtube);
+  --color-tiktok: var(--color-tiktok);
+
+  --breakpoint-3xl: 1680px;
+
+  --width-custom: 47%;
+  --height-screen: 100svh;
+  --min-height-screen: 100svh;
+  --min-height-page: 70svh;
+
+  --aspect-3/2: 3/2;
+  --aspect-ipad: 4/3;
+  --aspect-iphone: 19/9;
+
+  --grid-template-rows-layout: auto 1fr auto;
+  --grid-template-columns-full: 100%;
+
+  --height-navbar: 4rem;
+  --transition-min-height: min-height .2s ease-in-out;
+}
+
+
+@layer base {
+  html,
+  body {
+    @apply h-full;
+  }
+
+  body {
+    @apply m-0;
+  }
+
+  pre {
+    @apply whitespace-pre-wrap;
+  }
+
+  @media (prefers-color-scheme: light) {}
+
+  .card {
+    @apply space-y-4;
+  }
+}
+
+@layer components {
+  .component {
+    @apply px-4 py-8 lg:py-12;
+  }
+}
+
+@utility transition-min-h {
+  transition: min-height .2s ease-in-out;
+}
+
+@utility transform-svg {
+  transform: translate(86.875px, -130.312px) scale(1.5, 1.5);
+}
+
+#cc-main .cm--cloud {
+  @apply max-w-4xl;
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+.app,
+#app {
+  @apply grid min-h-screen relative grid-rows-layout grid-cols-full;
+}
+
+.headroom {
+  @apply fixed top-0 left-0 w-full px-2 lg:px-6 will-change-transform transition-transform duration-300 ease-in-out;
+}
+
+
+.headroom--unpinned {
+  @apply -translate-y-full;
+}
+
+.headroom--pinned, 
+.headroom--top,
+.headroom--bottom {
+  @apply !translate-y-0;
+}
+
+
+/* === WCAG prefers-reduced-motion === (global) */
+@media (prefers-reduced-motion: reduce) {
+  .headroom {
+    @apply transition-none duration-0 ease-linear;
+  }
+  .headroom--inner {
+    @apply transition-none duration-0 ease-linear;
+  }
+}
+
+.hamburger {
+  @apply relative w-6 h-5 flex flex-col justify-between cursor-pointer transition-transform duration-300;
+}
+
+.hamburger__item {
+  @apply block h-0.5 w-full bg-black transition-all duration-300 ease-in-out;
+}
+
+.hamburger--is-open .hamburger__item--first {
+  @apply rotate-45 translate-y-2;
+}
+
+.hamburger--is-open .hamburger__item--middle {
+  @apply opacity-0;
+}
+
+.hamburger--is-open .hamburger__item--last {
+  @apply -rotate-45 -translate-y-2;
+}
+
+/* === WCAG prefers-reduced-motion === */
+@media (prefers-reduced-motion: reduce) {
+  .hamburger {
+    @apply transition-none duration-0 ease-linear;
+  }
+  .hamburger__item {
+    @apply transition-none duration-0 ease-linear;
+  }
+}
+
+
+#logo .letters-bold path {
+  @apply fill-primary;
+}
+
+#logo .letters-thin path {
+  @apply fill-secondary dark:fill-white;
+}
+
+.hero {
+  @apply min-h-screen;
+  
+  & .hero-inner {
+    @apply px-6;
+    padding-top: calc(var(--height-navbar) + 0);
+  }
+
+  & .hero-header {
+    @apply max-w-xl;
+    padding-top: calc(var(--height-navbar) + 4rem);
+  }
+  
+  .hero-image {
+    &::after {
+      @apply absolute w-full h-full bg-black bg-blend-multiply;
+    }
+  }
+
+  & .cta-wrapper {
+    @apply mt-8 mb-12;
+  }
+}
+
+.footer-content {
+  & ul {
+    /* @apply pb-4; */
+    
+    &:not(:last-child) {
+      @apply pb-4;
+    }
+  }
+}
+
+.full-width-element {
+  @apply w-screen max-w-screen relative left-1/2 -ml-[50vw] -mr-[50vw];
+}
+
+
+#cc-main {
+  .pm__title,
+  .cm__title {
+    @apply flex flex-row gap-1.5;
+  }
+}
+
+.section-socialmedia {
+  .gallery-image {
+    &:nth-last-of-type(1) {
+      @apply md:-mt-4;
+    }
+  }
+}
+
+.component {
+  @apply bg-white;
+}
+
+.component-theme-office {
+  @apply bg-brand-sand/60;
+}
+
+.membership-item {
+  @apply flex-none w-10/12 lg:w-custom xl:max-w-xs xl:min-w-[25%] relative border md:border-0 rounded-lg xl:mx-0 bg-white transform transition duration-500 xl:hover:scale-105 p-6 pt-8 snap-center;
+}
