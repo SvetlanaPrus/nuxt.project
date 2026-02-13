@@ -1,6 +1,6 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
+  themes: dark --prefersdark;
 }
 
 :root {
@@ -12,28 +12,27 @@
   --color-green: oklch(0.6758 0.1571 133.81);
   --color-sand: oklch(0.888 0.0171 87.51);
 
-
   --primary: oklch(0.662 0.1385 234);
-  --primary-foreground: oklch(1.0000 0.0001 263.28);
+  --primary-foreground: oklch(1 0.0001 263.28);
   --secondary: oklch(0.4032 0.0507 77.11);
-  --secondary-foreground: oklch(0.3184 0.0170 48.11);
+  --secondary-foreground: oklch(0.3184 0.017 48.11);
 
   --background: var(--color-brand-sand);
   --foreground: oklch(0.3212 0.0157 50.88);
 
   --card: var(--color-gray-200);
-  --card-foreground: oklch(0.3184 0.0170 48.11);
+  --card-foreground: oklch(0.3184 0.017 48.11);
 
-  --popover: oklch(1.0000 0.0001 263.28);
-  --popover-foreground:oklch(0.3184 0.0170 48.11);
+  --popover: oklch(1 0.0001 263.28);
+  --popover-foreground: oklch(0.3184 0.017 48.11);
 
   --muted: oklch(0.9512 0.0034 38.54);
-  --muted-foreground: oklch(0.5 0.0264 67.33); 
+  --muted-foreground: oklch(0.5 0.0264 67.33);
 
-  --accent: oklch(0.8810 0.0202 45.11);
-  --accent-foreground: oklch(0.3184 0.0170 48.11);
+  --accent: oklch(0.881 0.0202 45.11);
+  --accent-foreground: oklch(0.3184 0.017 48.11);
 
-  --destructive: oklch(0.6352 0.2068 25.30);
+  --destructive: oklch(0.6352 0.2068 25.3);
   --destructive-foreground: oklch(0.9812 0.0035 248.23);
 
   --border: oklch(0.9025 0.0081 36.15);
@@ -43,13 +42,11 @@
   --radius: var(--radius-lg);
 }
 
-
 @theme {
   --font-family-Roboto: Roboto, Helvetica, Arial, sans-serif;
   /* --font-family-SuisseIntlRegular: "Suisse Intl Regular", Roboto, Helvetica, Arial, sans-serif; */
   /* --font-family-SuisseIntlMedium: "Suisse Intl Medium", Roboto, Helvetica, Arial, sans-serif; */
   /* --font-family-SuisseIntlBold: "Suisse Intl Bold", Roboto, Helvetica, Arial, sans-serif; */
-
 
   --color-black: var(--color-gray-800);
   --color-brand-primary: var(--primary);
@@ -89,9 +86,8 @@
   --grid-template-columns-full: 100%;
 
   --height-navbar: 4rem;
-  --transition-min-height: min-height .2s ease-in-out;
+  --transition-min-height: min-height 0.2s ease-in-out;
 }
-
 
 @layer base {
   html,
@@ -107,7 +103,8 @@
     @apply whitespace-pre-wrap;
   }
 
-  @media (prefers-color-scheme: light) {}
+  @media (prefers-color-scheme: light) {
+  }
 
   .card {
     @apply space-y-4;
@@ -121,7 +118,7 @@
 }
 
 @utility transition-min-h {
-  transition: min-height .2s ease-in-out;
+  transition: min-height 0.2s ease-in-out;
 }
 
 @utility transform-svg {
@@ -143,17 +140,15 @@
   @apply fixed top-0 left-0 w-full px-2 lg:px-6 will-change-transform transition-transform duration-300 ease-in-out;
 }
 
-
 .headroom--unpinned {
   @apply -translate-y-full;
 }
 
-.headroom--pinned, 
+.headroom--pinned,
 .headroom--top,
 .headroom--bottom {
   @apply !translate-y-0;
 }
-
 
 /* === WCAG prefers-reduced-motion === (global) */
 @media (prefers-reduced-motion: reduce) {
@@ -195,7 +190,6 @@
   }
 }
 
-
 #logo .letters-bold path {
   @apply fill-primary;
 }
@@ -206,7 +200,7 @@
 
 .hero {
   @apply min-h-screen;
-  
+
   & .hero-inner {
     @apply px-6;
     padding-top: calc(var(--height-navbar) + 0);
@@ -216,7 +210,7 @@
     @apply max-w-xl;
     padding-top: calc(var(--height-navbar) + 4rem);
   }
-  
+
   .hero-image {
     &::after {
       @apply absolute w-full h-full bg-black bg-blend-multiply;
@@ -231,7 +225,7 @@
 .footer-content {
   & ul {
     /* @apply pb-4; */
-    
+
     &:not(:last-child) {
       @apply pb-4;
     }
@@ -241,7 +235,6 @@
 .full-width-element {
   @apply w-screen max-w-screen relative left-1/2 -ml-[50vw] -mr-[50vw];
 }
-
 
 #cc-main {
   .pm__title,
